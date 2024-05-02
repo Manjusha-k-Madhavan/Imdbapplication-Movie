@@ -1,0 +1,71 @@
+Movie.objects.create(name="ozler",language="malayalam",run_time="120",genre="action",director="jithu joseph",year="2024",actors="jayaram")
+Movie.objects.create(name="vaaranam aayiram",language="Tamil",run_time="160",genre="action drama",director="gautham vasudev menon",year="2008",actors="surya")
+Movie.objects.create(name="godha",language="malayalam",run_time="140",genre="sports comedy",director="basil joseph",year="2017",actors="Tovino Thomas")
+Movie.objects.create(name="niram,",language="malayalam",run_time="130",genre="romantic comedy",director="kamal",year="1999",actors="kunchacko boban")
+Movie.objects.create(name="garudan",language="malayalam",run_time="140",genre="crime thriller",director="arun varma",year="2023",actors="sureshgopi")
+Movie.objects.create(name="seven",language="english",run_time="150",genre="crime horror thriller",director="david fincher",year="1995",actors="brad pitt")
+
+
+====query for fething all details 
+qs=Movie.objects.all()
+
+=====fetching a specific  movie details
+qs=Movie.objects.get(id=1)
+
+
+=======filtering objects====
+qs=Movie.objects.filter(language="malayalam")
+
+
+
+===update orm query===
+Movie.objects.filter(id=3).update(director="new director",genre="comdey")
+
+======delete===
+Movie.objects.filter(id=1).delete()
+
+
+
+
+
+====filtering bu lss than 2023==field lookup
+qs=Movie.objects.filter(year__lt=2023)
+<   __lt
+<= __lte
+> __gt
+>= __gte
+
+qs=Movie.objects.filter(run_time__gt=120)
+qs=Movie.objects.filter(run_time__gte=150)
+
+===range of run_time 120-160=====
+qs=Movie.objects.filter(run_time__gte=120,run_time__lte=160)
+
+====movie with year!=2023===
+qs=Movie.objects.exclude(year=2023)
+
+===for listing all genre ==  flat=True for removing tuple ,distinct for nonrepeating
+qs=Movie.objects.all().values_list("genre",flat=True).distinct()
+
+
+
+
+
+Employee
+
+Employee.objects.create(managerid="1",name="alex smith",department="admin",salary="$90,000",city="boulder")
+qs.Employee.objects.all()
+qs.Employee.objects.get(id=2)
+qs.Employee.objects.filter(salary__gte=$50,000)
+qs.Employee.objects.exclude(department="marketing")
+qs.Employee.objects.all().Values_list("department",flat=True).distinct()
+
+
+
+
+
+
+
+
+
+
